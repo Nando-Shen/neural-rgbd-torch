@@ -13,7 +13,7 @@ class FeatureArray(nn.Module):
         self.num_channels = num_channels
 
         self.data = nn.Parameter(
-            torch.random.normal([num_frames, num_channels], dtype=torch.float32)
+            torch.randn([num_frames, num_channels], dtype=torch.float32)
         )
 
     def forward(self, ids):
