@@ -7,7 +7,7 @@ class FeatureArray(nn.Module):
     """
 
     def __init__(self, num_frames, num_channels):
-        #super(FeatureArray, self).__init__()
+        super(FeatureArray, self).__init__()
 
         self.num_frames = num_frames
         self.num_channels = num_channels
