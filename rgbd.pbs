@@ -13,4 +13,4 @@ module load cuda/10.2.89
 cd external/NumpyMarchingCubes
 python setup.py install
 cd /home/jshe2377/neural-rgbd-torch
-python optimize.py --config configs/kitchen.txt
+python optimize.py --config configs/thin_geo.txt
