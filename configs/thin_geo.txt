@@ -11,7 +11,7 @@ N_importance = 16
 chunk = 4096  # 1024 * 16
 frame_features = 2
 optimize_poses = True
-use_deformation_field = True
+use_deformation_field = False
 share_coarse_fine = True
 multires = 8
 

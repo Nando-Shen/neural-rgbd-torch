@@ -18,6 +18,7 @@ class DeformationField(nn.Module):
         
 
     def forward(self, x):
+
         for i, l in enumerate(self.pts_linears):
             h = self.pts_linears[i](l)
             h = F.relu(h)
