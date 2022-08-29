@@ -19,7 +19,7 @@ class DeformationField(nn.Module):
 
     def forward(self, x):
         for i, l in enumerate(self.pts_linears):
-            h = self.pts_linears[i](h)
+            h = self.pts_linears[i](l)
             h = F.relu(h)
             if i in self.skips:
                 h = torch.cat([x, h], -1)
