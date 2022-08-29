@@ -8,7 +8,7 @@ import extract_mesh
 from torch import optim
 from tqdm import tqdm, trange
 from tensorboardX import SummaryWriter
-from datasets.load_scannet import load_scannet_data
+from .datasets.load_scannet import load_scannet_data
 from nerf_helpers import *
 from optimization import FeatureArray, DeformationField, PoseArray
 
