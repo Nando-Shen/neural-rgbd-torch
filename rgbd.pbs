@@ -7,7 +7,7 @@
 cd /home/jshe2377/neural-rgbd-torch
 
 module load python/3.8.2 magma/2.5.3 openmpi-gcc/3.1.5
-source /home/jshe2377/neus/bin/activate
+source /home/jshe2377/NeuS/neus/bin/activate
 module load cuda/10.2.89
 
 cd external/NumpyMarchingCubes
