@@ -12,9 +12,8 @@ class FeatureArray(nn.Module):
         self.num_frames = num_frames
         self.num_channels = num_channels
 
-        self.data = nn.Parameter(
-            torch.randn([num_frames, num_channels], dtype=torch.float32)
-        )
+        self.data = torch.randn([num_frames, num_channels], dtype=torch.float32)
+
 
     def forward(self, ids):
         # get the corr
