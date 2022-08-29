@@ -18,4 +18,4 @@ class FeatureArray(nn.Module):
     def forward(self, ids):
         # get the corr
         ids = torch.where(ids < self.num_frames, ids, torch.zeros_like(ids))
-        return torch.gather(self.data, ids)
+        return torch.gather(self.data, 0, ids)
