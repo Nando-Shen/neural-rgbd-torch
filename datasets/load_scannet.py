@@ -73,7 +73,7 @@ def get_num_training_frames(basedir, trainskip):
 
 
 def get_intrinsics(basedir, crop):
-    depth = imageio.imread(os.path.join(basedir, 'depth_filtered', 'depth0.png'))
+    depth = imageio.imread(os.path.join(basedir, 'depth', 'depth0.png'))
     H, W = depth.shape[:2]
     H = H - crop / 2
     W = W - crop / 2
@@ -86,7 +86,7 @@ def load_scannet_data(basedir, trainskip, downsample_factor=1, translation=0.0, 
 
     # Get image filenames, poses and intrinsics
     img_files = [f for f in sorted(os.listdir(os.path.join(basedir, 'images')), key=alphanum_key) if f.endswith('png')]
-    depth_files = [f for f in sorted(os.listdir(os.path.join(basedir, 'depth_filtered')), key=alphanum_key) if f.endswith('png')]
+    depth_files = [f for f in sorted(os.listdir(os.path.join(basedir, 'depth')), key=alphanum_key) if f.endswith('png')]
 
     # If Pose is NaN, then valid=false, initialise as 4x4 identity matrix
     all_poses, valid_poses = load_poses(os.path.join(basedir, 'trainval_poses.txt'))
@@ -105,7 +105,7 @@ def load_scannet_data(basedir, trainskip, downsample_factor=1, translation=0.0, 
     for i in tqdm.tqdm(train_frame_ids):
         if valid_poses[i]:
             img = imageio.imread(os.path.join(basedir, 'images', img_files[i]))
-            depth = imageio.imread(os.path.join(basedir, 'depth_filtered', depth_files[i]))
+            depth = imageio.imread(os.path.join(basedir, 'depth', depth_files[i]))
 
             images.append(img)
             depth_maps.append(depth)

@@ -12,6 +12,9 @@ from datasets.load_scannet import load_scannet_data
 from nerf_helpers import *
 from optimization import FeatureArray, DeformationField, PoseArray
 
+from metrics import *
+
+
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
@@ -690,6 +693,13 @@ def train():
         # Depth loss
         depth_loss = losses.get_depth_loss(depth, target_d)
         loss += args.depth_weight * depth_loss
+        rmse = depth_rmse(depth, target_d)
+        rmse_log = depth_rmse_log(depth, target_d)
+        abs_rel = depth_abs_rel(depth, target_d)
+        sq_rel = depth_sq_rel(depth, target_d)
+        delta_1 = depth_delta(depth, target_d, 1)
+        delta_2 = depth_delta(depth, target_d, 2)
+        delta_3 = depth_delta(depth, target_d, 3)
 
         if 'depth0' in extras:
             depth_loss0 = losses.get_depth_loss(extras['depth0'], target_d)
@@ -769,6 +779,14 @@ def train():
             writer.add_scalar('sdf_loss', sdf_loss, global_step)
             writer.add_scalar('psnr', psnr, global_step)
             writer.add_histogram('sdf', sdf, global_step)
+            writer.add_scalar('rmse', rmse, global_step)
+            writer.add_scalar('rmse_log', rmse_log, global_step)
+            writer.add_scalar('abs_rel', abs_rel, global_step)
+            writer.add_scalar('sq_rel', sq_rel, global_step)
+            writer.add_scalar('delta_1', delta_1, global_step)
+            writer.add_scalar('delta_2', delta_2, global_step)
+            writer.add_scalar('delta_3', delta_3, global_step)
+
             if args.N_importance > 0:
                 writer.add_scalar('psnr0', psnr0, global_step)
         
