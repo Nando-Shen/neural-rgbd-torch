@@ -4,7 +4,7 @@ datadir = /project/RDS-FEI-VUR-RW/jshe2377/neural_rgbd_data/thin_geometry
 dataset_type = scannet
 trainskip = 4
 
-N_iters = 400000
+N_iters = 300000
 N_rand = 1024
 N_samples = 256
 N_importance = 16

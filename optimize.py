@@ -693,13 +693,16 @@ def train():
         # Depth loss
         depth_loss = losses.get_depth_loss(depth, target_d)
         loss += args.depth_weight * depth_loss
-        rmse = depth_rmse(depth, target_d)
-        rmse_log = depth_rmse_log(depth, target_d)
-        abs_rel = depth_abs_rel(depth, target_d)
-        sq_rel = depth_sq_rel(depth, target_d)
-        delta_1 = depth_delta(depth, target_d, 1)
-        delta_2 = depth_delta(depth, target_d, 2)
-        delta_3 = depth_delta(depth, target_d, 3)
+
+        depth_resize = depth.reshape(-1, 1)
+        target_d_resize = target_d.reshape(-1, 1)
+        rmse = depth_rmse(depth_resize, target_d_resize)
+        rmse_log = depth_rmse_log(depth_resize, target_d_resize)
+        abs_rel = depth_abs_rel(depth_resize, target_d_resize)
+        sq_rel = depth_sq_rel(depth_resize, target_d_resize)
+        delta_1 = depth_delta(depth_resize, target_d_resize, 1)
+        delta_2 = depth_delta(depth_resize, target_d_resize, 2)
+        delta_3 = depth_delta(depth_resize, target_d_resize, 3)
 
         if 'depth0' in extras:
             depth_loss0 = losses.get_depth_loss(extras['depth0'], target_d)
