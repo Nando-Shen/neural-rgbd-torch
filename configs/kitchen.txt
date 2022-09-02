@@ -1,6 +1,6 @@
 expname = kitchen
 basedir = ./logs
-datadir = ./data/kitchen
+datadir = /project/RDS-FEI-VUR-RW/jshe2377/neural_rgbd_data/thin_geometry
 dataset_type = scannet
 trainskip = 1
 
