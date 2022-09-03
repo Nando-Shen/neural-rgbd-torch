@@ -1,6 +1,6 @@
 expname = kitchen
 basedir = ./logs
-datadir = /content/drive/MyDrive/neural_rgbd_data/thin_geometry
+datadir = /content/drive/MyDrive/thin_geometry
 dataset_type = scannet
 trainskip = 1
 
